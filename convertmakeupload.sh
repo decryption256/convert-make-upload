@@ -3,7 +3,7 @@
 echo Enter the directory containing TIFF files
 read tiffdir
 
-echo What should I call the PDF (e.g: macworld_au-2007.09)
+echo What should I call the PDF (e.g: macworld_au-2007_09)
 read pdfname
 
 #rename tiff to tif because opj_compress doesn't like four character file extensions
@@ -22,7 +22,7 @@ mv $tiffdir/*.tif $tiffdir/tif
 mv $tiffdir/*.JP2 $tiffdir/jp2
 
 #make PDF of JPEG2000 files
-img2pdf -v -o /videos/scans/pdfs/$pdfname.pdf *.JP2
+img2pdf -v -o /videos/scans/pdfs/$pdfname.pdf $tiffdir/jp2/*.JP2
 
 #archive the original TIFF scans
 tar -cjvf /videos/scans/archives/$pdfname.tar.bz2 $tiffdir/tif/*.tif
